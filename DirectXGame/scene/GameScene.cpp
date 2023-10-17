@@ -65,41 +65,41 @@ void GameScene::Update() {
 	ImGui::End();
 
 	for (int i = 0; i < 6; i++) {
-		if (player_->isPlayerAttack) {
+		if (player_->GetIsPlayerAttack()) {
 			int attackRange{};
 			
-			if (player_->isPlayerAttack == 2) {
-				attackRange = player_->kAttackRangeStrong;
-			} else if (player_->isPlayerAttack == 1) {
-				attackRange = player_->kAttackRangeWeak;
+			if (player_->GetIsPlayerAttack() == 2) {
+				attackRange = player_->GetAttackRangeStrong();
+			} else if (player_->GetIsPlayerAttack() == 1) {
+				attackRange = player_->GetAttackRangeWeak();
 			}
 
-			switch (player_->nowPlayerSide) {
+			switch (player_->GetNowPlayerSide()) {
 				case Player::side::up:
-					if (enemy_[i]->worldTransform_.translation_.x > player_->attackRangePos.x - attackRange / 2 && enemy_[i]->worldTransform_.translation_.x < player_->attackRangePos.x + attackRange) {
-						if (enemy_[i]->worldTransform_.translation_.y > player_->attackRangePos.y && enemy_[i]->worldTransform_.translation_.y < player_->attackRangePos.y + 30) {
-							enemy_[i]->isDeath = true;
+					if (enemy_[i]->GetWorldTransform().translation_.x > player_->GetAttackRangePos().x - attackRange / 2 && enemy_[i]->GetWorldTransform().translation_.x < player_->GetAttackRangePos().x + attackRange) {
+						if (enemy_[i]->GetWorldTransform().translation_.y > player_->GetAttackRangePos().y && enemy_[i]->GetWorldTransform().translation_.y < player_->GetAttackRangePos().y + 30) {
+						    enemy_[i]->SetIsDeath(true);
 						}
 					}
 					break;
 				case Player::side::down:
-					if (enemy_[i]->worldTransform_.translation_.x > player_->attackRangePos.x - attackRange / 2 && enemy_[i]->worldTransform_.translation_.x < player_->attackRangePos.x + attackRange) {
-						if (enemy_[i]->worldTransform_.translation_.y < player_->attackRangePos.y && enemy_[i]->worldTransform_.translation_.y > player_->attackRangePos.y - 30) {
-							enemy_[i]->isDeath = true;
+					if (enemy_[i]->GetWorldTransform().translation_.x > player_->GetAttackRangePos().x - attackRange / 2 && enemy_[i]->GetWorldTransform().translation_.x < player_->GetAttackRangePos().x + attackRange) {
+						if (enemy_[i]->GetWorldTransform().translation_.y < player_->GetAttackRangePos().y && enemy_[i]->GetWorldTransform().translation_.y > player_->GetAttackRangePos().y - 30) {
+						    enemy_[i]->SetIsDeath(true);
 						}
 					}
 					break;
 				case Player::side::left:
-					if (enemy_[i]->worldTransform_.translation_.x > player_->attackRangePos.x && enemy_[i]->worldTransform_.translation_.x < player_->attackRangePos.x + 30) {
-						if (enemy_[i]->worldTransform_.translation_.y > player_->attackRangePos.y - attackRange / 2 && enemy_[i]->worldTransform_.translation_.y < player_->attackRangePos.y + attackRange / 2) {
-							enemy_[i]->isDeath = true;
+					if (enemy_[i]->GetWorldTransform().translation_.x > player_->GetAttackRangePos().x && enemy_[i]->GetWorldTransform().translation_.x < player_->GetAttackRangePos().x + 30) {
+						if (enemy_[i]->GetWorldTransform().translation_.y > player_->GetAttackRangePos().y - attackRange / 2 && enemy_[i]->GetWorldTransform().translation_.y < player_->GetAttackRangePos().y + attackRange / 2) {
+						    enemy_[i]->SetIsDeath(true);
 						}
 					}
 					break;
 				case Player::side::right:
-					if (enemy_[i]->worldTransform_.translation_.x < player_->attackRangePos.x && enemy_[i]->worldTransform_.translation_.x > player_->attackRangePos.x - 30) {
-						if (enemy_[i]->worldTransform_.translation_.y > player_->attackRangePos.y - attackRange / 2 && enemy_[i]->worldTransform_.translation_.y < player_->attackRangePos.y + attackRange / 2) {
-							enemy_[i]->isDeath = true;
+					if (enemy_[i]->GetWorldTransform().translation_.x < player_->GetAttackRangePos().x && enemy_[i]->GetWorldTransform().translation_.x > player_->GetAttackRangePos().x - 30) {
+						if (enemy_[i]->GetWorldTransform().translation_.y > player_->GetAttackRangePos().y - attackRange / 2 && enemy_[i]->GetWorldTransform().translation_.y < player_->GetAttackRangePos().y + attackRange / 2) {
+						    enemy_[i]->SetIsDeath(true);
 						}
 					}
 					break;
